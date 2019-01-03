@@ -2,7 +2,7 @@
 CSM tech exercise
 """
 
-import time, csv, sys, json, urllib, requests
+import time, csv, sys, json, requests, os
 
 def prompt_punchline(prompt, punchline):
 	print(prompt)
@@ -22,8 +22,11 @@ def contin():
 
 #handle inputs from user before calling prompt_punchline from local csv
 def main():
-	if not sys.argv[1]:
-		print('include a csv file ex. python3 jokes.py jokes.csv')
+	if len(sys.argv) == 1:
+		main2()
+		exit()
+	if not os.path.isfile(sys.argv[1]):
+		print('\ncsv file doesn\'t exist\n')
 		exit()
 	with open(sys.argv[1]) as csvfile:
 		line = csv.reader(csvfile, delimiter = ',')
@@ -70,19 +73,5 @@ def main2():
 		print("das invalid")
 		main2()
 
-#main2()
-def init():
-	print('csv or reddit?')
-	inp = input().replace(" ", "").lower()
-	if inp == 'csv':
-		main()
-	elif inp == 'reddit':
-		main2()
-	elif inp == 'exit':
-		exit()
-	else: 
-		print()
-		print('invalid (csv / reddit / exit)')
-		init()
-init()
+main()
 
