@@ -1,16 +1,7 @@
-'''
+"""
 CSM tech exercise
+"""
 
-Part 1:
-Deliver prompt
-Wait 2s
-Deliver punchline
-Wait for user input
-	if “next”, goto 1.
-	if “quit”, exit program
-	else, print error message and wait for new input
-Exit when no more jokes to tell
-'''
 import time, csv, sys, json, urllib, requests
 
 def prompt_punchline(prompt, punchline):
